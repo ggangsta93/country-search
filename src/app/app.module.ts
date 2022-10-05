@@ -8,6 +8,7 @@ import { ByRegionComponent } from './country/pages/by-region/by-region.component
 import { SidebarComponent } from './shared/sidebar/sidebar.component';
 import { SharedModule } from './shared/shared.module';
 import { CountryModule } from './country/country.module';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { CountryModule } from './country/country.module';
   ],
   imports: [
     BrowserModule,
+    AppRoutingModule,
     CountryModule,
     SharedModule
   
