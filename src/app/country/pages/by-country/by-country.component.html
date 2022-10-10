@@ -3,7 +3,7 @@
 <hr>
 <div class="row">
     <div class="col">
-        <app-country-input (onEnter)="buscar($event)" (onDebounce)="suggestions($event)"></app-country-input>
+        <app-country-input (onEnter)="buscar($event)" (onDebounce)="suggestions($event)" placeHolder="Buscar por país..."></app-country-input>
     </div>
     <hr>
     <div *ngIf="esError" class="alert alert-danger">

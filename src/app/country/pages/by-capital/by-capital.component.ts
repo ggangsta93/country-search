@@ -27,8 +27,4 @@ export class ByCapitalComponent implements OnInit {
       this.capitals = [];
     });
   }
-
-  suggestions(termino:string){
-    this.esError = false;
-  }
 }
