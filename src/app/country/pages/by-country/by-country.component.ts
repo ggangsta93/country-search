@@ -30,4 +30,8 @@ export class ByCountryComponent implements OnInit {
     });
   }
 
+  suggestions(termino:string){
+    this.esError = false;
+  }
+
 }
