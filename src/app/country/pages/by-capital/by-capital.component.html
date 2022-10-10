@@ -1,1 +1,17 @@
-<p>by-capital works!</p>
+<h2>Por capital</h2>
+
+<hr>
+<div class="row">
+    <div class="col">
+        <app-country-input (onEnter)="buscar($event)" (onDebounce)="suggestions($event)"></app-country-input>
+    </div>
+    <hr>
+    <div *ngIf="esError" class="alert alert-danger">
+        No se encontró nada con el término {{termino}}
+    </div>
+    <div *ngIf="capitals.length > 0" class="row">
+        <div class="col">
+            <app-country-table [countries]="capitals"></app-country-table>
+        </div>
+    </div>
+</div>
