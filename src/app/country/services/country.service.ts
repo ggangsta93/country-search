@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import {catchError} from 'rxjs/operators';
+import { catchError } from 'rxjs/operators';
 import { Country } from '../interfaces/country.interface';
 
 @Injectable({
@@ -9,20 +9,27 @@ import { Country } from '../interfaces/country.interface';
 })
 export class CountryService {
 
-  private apiUrl:string = 'https://restcountries.com/v2';
+  private apiUrl: string = 'https://restcountries.com/v2';
 
-  constructor(private http: HttpClient) { 
+  constructor(private http: HttpClient) {
 
   }
 
-  buscarPais(termino:string):Observable<Country[]>{
+  buscarPais(termino: string): Observable<Country[]> {
     const url = `${this.apiUrl}/name/${termino}`;
     return this.http.get<Country[]>(url);
     /*.pipe(catchError(error => of([])));*/
   }
 
-  buscarCapital(termino:string):Observable<Country[]>{
+  buscarCapital(termino: string): Observable<Country[]> {
     const url = `${this.apiUrl}/capital/${termino}`;
     return this.http.get<Country[]>(url);
   }
+
+  getCountryByAlpha(termino: string):Observable<Country>{
+    const url = `${this.apiUrl}/alpha/${termino}`;
+    return this.http.get<Country>(url);
+  }
+
+
 }
