@@ -7,12 +7,13 @@ import { SeeCountryComponent } from './pages/see-country/see-country.component';
 import { FormsModule } from '@angular/forms';
 import { CountryTableComponent } from './components/country-table/country-table.component';
 import { CountryInputComponent } from './components/country-input/country-input.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [ByCapitalComponent, ByCountryComponent, ByRegionComponent, SeeCountryComponent, CountryTableComponent, CountryInputComponent],
   exports:[ByCapitalComponent, ByCountryComponent, ByRegionComponent, SeeCountryComponent],
   imports: [
-    CommonModule, FormsModule
+    CommonModule, FormsModule, RouterModule
   ]
 })
 export class CountryModule { }
