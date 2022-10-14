@@ -3,8 +3,23 @@
 <hr>
 <div class="row">
     <div class="col">
-        <app-country-input (onEnter)="buscar($event)" (onDebounce)="suggestions($event)" placeHolder="Buscar por país..."></app-country-input>
+        <app-country-input (onEnter)="buscar($event)" (onDebounce)="suggestions($event)"
+            placeHolder="Buscar por país..."></app-country-input>
     </div>
+    <ul *ngIf="showSuggestion" class="list-group">
+        <li *ngFor="let country of suggestedCountries" class="list-group-item list-group-action">
+            <a class="nav-link" [routerLink]="['/pais', country.alpha2Code]">
+                {{country.name}}
+            </a>
+        </li>
+        <li class="list-group-item list-group-action">
+            <a class="nav-link" (click)="buscar(termino)">
+                Buscar "{{termino}}"
+            </a>
+        </li>
+    </ul>
+
+
     <hr>
     <div *ngIf="esError" class="alert alert-danger">
         No se encontró nada con el término {{termino}}

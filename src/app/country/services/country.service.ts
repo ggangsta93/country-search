@@ -1,7 +1,7 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { catchError, tap } from 'rxjs/operators';
 import { Country } from '../interfaces/country.interface';
 
 @Injectable({
@@ -10,6 +10,9 @@ import { Country } from '../interfaces/country.interface';
 export class CountryService {
 
   private apiUrl: string = 'https://restcountries.com/v2';
+  get httpParams() {
+    return new HttpParams().set('fields', 'name,capital,alpha2Code,flag,population');
+  }
 
   constructor(private http: HttpClient) {
 
@@ -26,9 +29,19 @@ export class CountryService {
     return this.http.get<Country[]>(url);
   }
 
-  getCountryByAlpha(termino: string):Observable<Country>{
+  getCountryByAlpha(termino: string): Observable<Country> {
     const url = `${this.apiUrl}/alpha/${termino}`;
     return this.http.get<Country>(url);
+  }
+
+  buscarRegion(region: string): Observable<Country[]> {
+
+    const url = `${this.apiUrl}/region/${region}`;
+
+    return this.http.get<Country[]>(url, { params: this.httpParams })
+      .pipe(
+        tap(console.log)
+      )
   }
 
 
